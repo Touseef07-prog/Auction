@@ -1,0 +1,46 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<h1>Category</h1>
+
+{% for i in cat %}
+<li>
+  <a href="{% url 'cat_open' i.category %}">{{i.category}}</a>
+</li>
+
+{%endfor%}
+
+{% for j in at %}
+<div class="container-sm">
+
+<div class="shadow-lg p-3 mb-5 bg-white rounded">
+
+<a href="{% url 'indexdetail' j.id %}">
+<div class="card mb-3">
+{% if j.img.url != None %}
+  <img src="{{j.img.url}}" class="card-img-top" alt="...">
+{% else  %}
+<p>no image</p>
+{% endif%}
+  <div class="card-body">
+    <h5 class="card-title">{{j.product_name}}</h5>
+
+</div>
+
+
+
+
+
+
+
+</div>
+</div>
+</div>
+
+
+{%endfor%}
+
+
+
+
+{% endblock %}

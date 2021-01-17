@@ -1,0 +1,24 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<a href="{% url 'show_comments' id %}">
+Show Comments
+</a>
+{% for i in cmnts%}
+<ul>
+  <li>{{i.comment}}</li>
+</ul>
+
+{%endfor%}
+
+    <form action="{% url 'post_comment' id  %}" method="post">{%csrf_token%}
+      <div class="form-group">
+          <input class="form-control"  type="text" name="comment" placeholder="Comment here">
+      </div>
+
+        <input class="btn btn-primary" type="submit" >
+    </form>
+
+
+
+{% endblock %}

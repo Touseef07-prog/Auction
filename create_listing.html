@@ -1,0 +1,33 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+
+    <form action="{% url 'save'  %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <input class="form-control"  type="text" name="Post_id" placeholder="Auction ID">
+        </div>
+        <div class="form-group">
+            <input class="form-control" autofocus type="text" name="product_name" placeholder="Product Name">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="text" name="category" placeholder="Category">
+        </div>
+        <div class="form-group">
+            <input class="form-control"  type="text" name="base_bid" placeholder="Starting Bid">
+        </div>
+        <div class="form-group">
+          <textarea name="product_info" rows="3" cols="135" placeholder="Details"></textarea>
+        </div>
+      <div class="form-group">
+         <label for="img">Select image:</label>
+     <input type="file" id="img" name="img" accept="image/*">
+    </div>
+
+        <input class="btn btn-primary" type="submit" value="create">
+    </form>
+
+
+
+{% endblock %}

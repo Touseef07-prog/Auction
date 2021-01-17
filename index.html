@@ -1,0 +1,42 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<div class="container-sm">
+
+    <h2>Active Listings</h2>
+
+
+{% for i in data %}
+<div class="shadow-lg p-3 mb-5 bg-white rounded">
+
+<a href="{% url 'indexdetail' i.id %}">
+
+  <div class="card mb-3">
+{% if i.img.url != None %}
+    <img src="{{i.img.url}}" class="card-img-top" alt="...">
+{% else  %}
+  <p>no image</p>
+{% endif%}
+    <div class="card-body">
+      <h5 class="card-title">{{i.product_name}}</h5>
+
+  </div>
+
+
+
+
+
+
+
+</div>
+</div>
+{% endfor %}
+</div>
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<div class="container-sm">
+
+    <h2>Active Listings</h2>
+
+
+{% for i in d %}
+<div class="shadow-lg p-3 mb-5 bg-white rounded">
+
+<a href="{% url 'comment' i.id %}">
+
+  <div class="card mb-3">
+{% if i.img.url != None %}
+    <img src="{{i.img.url}}" class="card-img-top" alt="...">
+{% else  %}
+  <p>no image</p>
+{% endif%}
+    <div class="card-body">
+      <h5 class="card-title">{{i.product_name}}</h5>
+      <p class="card-text">{{i.category}}</p>
+      <p class="card-text">{{i.product_info}}</p>
+
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+</a>
+
+
+
+
+<form  action="{%  url 'place_bid' i.id  %}" method="post">{%csrf_token%}
+
+<div class="form-group">
+       <textarea name="old_bid" rows="2" cols="4">{{i.base_bid}}</textarea>
+
+
+      <input class="form-control" type="text" name="new_bid" placeholder="Place your bid">
+
+      <input class="btn btn-primary" type="submit" value="Place">
+
+</div>
+
+</form>
+<div class="nav-item">
+    <a class="nav-link" href="{% url 'watchlist' i.id %}">Add to WatchList</a>
+</div>
+</div>
+{% endfor %}
+</div>
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<div class="container-sm">
+
+    <h2>watch list</h2>
+
+
+{% for i in a %}
+<div class="shadow-lg p-3 mb-5 bg-white rounded">
+
+<a href="{% url 'comment' i.id %}">
+
+  <div class="card mb-3">
+{% if i.w_listing.img.url != None %}
+    <img src="{{i.w_listing.img.url}}" class="card-img-top" alt="...">
+{% else  %}
+  <p>no image</p>
+{% endif%}
+    <div class="card-body">
+      <h5 class="card-title">{{i.w_listing.product_name}}</h5>
+      <p class="card-text">{{i.w_listing.category}}</p>
+      <p class="card-text">{{i.w_listing.product_info}}</p>
+
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+</a>
+
+</div>
+{% endfor %}
+</div>
+
+
+
+
+
+
+{% endblock %}
